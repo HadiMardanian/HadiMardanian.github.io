@@ -357,12 +357,13 @@
 
     /* ── Print / PDF ── */
     @media print {
-      @page { size: A4; margin: 12mm 14mm; }
+      @page { size: A4; margin: 10mm 12mm; }
 
       body {
         background: #fff;
         padding: 0;
-        font-size: 11px;
+        font-size: 10.5px;
+        line-height: 1.55;
       }
 
       .toolbar { display: none; }
@@ -373,22 +374,85 @@
       }
 
       .header {
-        padding: 0 0 1rem;
+        padding: 0 0 0.6rem;
+        margin-bottom: 0.6rem;
         border-bottom-width: 2px;
       }
 
-      .body { display: grid; }
-
-      .sidebar {
-        background: #fafbfc;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      .header h1 { font-size: 20px; margin-bottom: 0.15rem; }
+      .header .role { font-size: 11px; }
+      .header .summary {
+        margin-top: 0.5rem;
+        max-width: none;
+        font-size: 10px;
+        line-height: 1.6;
       }
 
-      .job, .side-item, .section {
+      .header-top { gap: 1rem; }
+      .contact { font-size: 9.5px; line-height: 1.65; min-width: 180px; }
+
+      .body {
+        display: block;
+      }
+
+      .sidebar {
+        float: none;
+        width: 100%;
+        padding: 0 0 0.65rem;
+        margin-bottom: 0.65rem;
+        border-left: none;
+        border-bottom: 1px solid var(--line);
+        background: transparent;
+        column-count: 3;
+        column-gap: 1.25rem;
+      }
+
+      .sidebar .section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 0.55rem;
+      }
+
+      .main {
+        margin-right: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .section {
+        margin-bottom: 0.85rem;
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+
+      .section-title {
+        font-size: 9px;
+        margin-bottom: 0.45rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .skill-block + .skill-block { margin-top: 0.5rem; }
+      .skill-block h4 { font-size: 9.5px; }
+      .skill-block p { font-size: 9px; line-height: 1.5; }
+
+      .meta-row { font-size: 9px; padding: 0.2rem 0; }
+      .side-item h4 { font-size: 9.5px; }
+      .side-item p { font-size: 9px; }
+      .side-item + .side-item { margin-top: 0.5rem; padding-top: 0.5rem; }
+      .soft-list { font-size: 9px; }
+
+      .job {
+        margin-bottom: 0.85rem;
+        padding-right: 0.85rem;
         break-inside: avoid;
         page-break-inside: avoid;
       }
+
+      .job h3 { font-size: 11px; }
+      .job .company { font-size: 10px; margin-bottom: 0.3rem; }
+      .job .date { font-size: 9px; }
+      .job li { font-size: 9.5px; line-height: 1.55; margin-bottom: 0.1rem; }
+      .job .tech { font-size: 8.5px; margin-top: 0.35rem; }
 
       a { color: var(--ink-soft) !important; text-decoration: none !important; }
     }
